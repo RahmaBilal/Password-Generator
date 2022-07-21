@@ -7,15 +7,13 @@ function randomInt(min, max) {
     min = 0
   }
 
-  var rand = Math.random()
-  return Math.floor(min*(1 - rand) + rand*max)
-
+  var random = Math.random()
+  return Math.floor(min*(1 - random) + random*max)
 }
 
 
 function getRandomItem(list) {
   return list[randomInt(list.length)]
-
 }
 
 function generatePassword() {
@@ -65,16 +63,20 @@ if (userWantsUppercase === true) {
   optionsCart.push(uppercaseList)
 }
 
+if (optionsCart.length === 0) {
+  optionsCart.push(lowercaseList)
+}
 //console.log(optionsCart)
 
 var generatedPassword = ""
 
-for (let i = 0; i < passwordLength; i++) {
+for (var i = 0; i < passwordLength; i++) {
   var randomList = getRandomItem(optionsCart)
   var randomChar = getRandomItem(randomList)
   generatedPassword += randomChar
 }
- console.log(generatedPassword)
+ //console.log(generatedPassword)
+ return generatedPassword
 }
 
 
